@@ -237,7 +237,7 @@ func (d *Dockbeat) Stop() {
 
 func (d *Dockbeat) RunOneTime(b *beat.Beat) error {
 	logp.Debug("dockbeat", "Tick!, getting list of containers")
-	containers, err := d.dockerClient.ListContainers(docker.ListContainersOptions{})
+	containers, err := d.dockerClient.ListContainers(docker.ListContainersOptions{All: true})
 
 	if err == nil {
 		logp.Debug("dockbeat", "got %v containers", len(containers))
